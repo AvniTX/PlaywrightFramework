@@ -94,7 +94,7 @@ public class ExtentReportListener implements ITestListener {
         System.out.println((result.getMethod().getMethodName() + " passed!"));
         test.get().pass("Test passed");
         String screenshotPath = takeScreenshot(result.getMethod().getMethodName());
-        test.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(takeScreenshot(screenshotPath)).build());
+        test.get().pass(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         test.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 public synchronized void onTestFailure(ITestResult result) {
@@ -111,7 +111,7 @@ public synchronized void onTestFailure(ITestResult result) {
     public synchronized void onTestSkipped(ITestResult result) {
         System.out.println((result.getMethod().getMethodName() + " skipped!"));
         String screenshotPath = takeScreenshot(result.getMethod().getMethodName());
-        test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(takeScreenshot(screenshotPath)).build());
+        test.get().skip(result.getThrowable(), MediaEntityBuilder.createScreenCaptureFromPath(screenshotPath).build());
         test.get().getModel().setEndTime(getTime(result.getEndMillis()));
     }
 
